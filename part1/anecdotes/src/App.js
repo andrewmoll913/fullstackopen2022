@@ -3,6 +3,16 @@ import { useState } from 'react'
 const random = (max) => {
   return Math.floor(Math.random() * max)
 }
+
+const Anecdote = ({ value, votes }) => (
+  <div>
+    <p>{value}</p>
+    <p>has {votes} votes</p>
+  </div>
+)
+
+const findMaxIndex = (array) => array.findIndex((element) => element === Math.max(...array))
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
@@ -13,7 +23,7 @@ const App = () => {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ]
-   
+
   const [selected, setSelected] = useState(0)
   const [votes, setVotes] = useState(Array(anecdotes.length).fill(0))
 
@@ -27,10 +37,13 @@ const App = () => {
 
   return (
     <div>
-      <p>{anecdotes[selected]}</p>
-      <p>has {votes[selected]} votes</p>
+      <h1>Anecdote of the day</h1>
+      <Anecdote value={anecdotes[selected]} votes={votes[selected]} />
       <button onClick={handleVote}>Vote</button>
       <button onClick={nextAnecdote}>Next anecdote</button>
+      <h1>Anecdote with the most votes</h1>
+      <Anecdote value={anecdotes[findMaxIndex(votes)]} 
+        votes={votes[findMaxIndex(votes)]} />
     </div>
   )
 }
