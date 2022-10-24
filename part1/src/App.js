@@ -10,19 +10,21 @@ const Total = (props) => {
   )
 }
 
+const Part = (props) => {
+  return (
+    <p>
+      {props.title} {props.excersises}
+    </p>
+  )
+}
+
 const Content = (props) => {
   return (
-    <>
-      <p>
-        {props.part1} {props.exercises1}
-      </p>
-      <p>
-        {props.part2} {props.exercises2}
-      </p>
-      <p>
-        {props.part3} {props.exercises3}
-      </p>
-    </>
+    <div>
+      <Part title={props.part1} excersises={props.exercises1}/>
+      <Part title={props.part2} excersises={props.exercises2}/>
+      <Part title={props.part3} excersises={props.exercises3}/>
+    </div>
   )
 }
 
