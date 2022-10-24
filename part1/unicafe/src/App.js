@@ -12,7 +12,7 @@ const Button = ({ handleClick, text }) => {
   )
 }
 
-const Data = ({ text, amount }) => <p>{text} {amount}</p>
+const StatisticLine = ({ text, value }) => <p>{text} {value}</p>
 
 const calculateAverage = (all, good, bad) => all === 0 ? 0 : (good - bad) / all
 
@@ -26,12 +26,12 @@ const Statistics = (props) => {
   return (
     <div>
       <Header text="statistics" />
-      <Data text="good" amount={props.good} />
-      <Data text="neutral" amount={props.neutral} />
-      <Data text="bad" amount={props.bad} />
-      <Data text="all" amount={all} />
-      <Data text="average" amount={calculateAverage(all, props.good, props.bad)} />
-      <Data text="positive" amount={calculatePostive(all, props.good)} />
+      <StatisticLine text="good" value={props.good} />
+      <StatisticLine text="neutral" value={props.neutral} />
+      <StatisticLine text="bad" value={props.bad} />
+      <StatisticLine text="all" value={all} />
+      <StatisticLine text="average" value={calculateAverage(all, props.good, props.bad)} />
+      <StatisticLine text="positive" value={calculatePostive(all, props.good)} />
     </div>
   )
 }
