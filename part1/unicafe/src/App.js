@@ -19,6 +19,9 @@ const calculateAverage = (all, good, bad) => all === 0 ? 0 : (good - bad) / all
 const calculatePostive = (all, good) => all === 0 ? "0 %" : `${(good / all) * 100} %`;
 
 const Statistics = (props) => {
+  if(props.good === 0 && props.neutral === 0 && props.bad === 0) {
+    return <p>No feedback given</p>
+  }
   const all = props.good + props.neutral + props.bad;
   return (
     <div>
